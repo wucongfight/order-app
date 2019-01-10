@@ -1,0 +1,58 @@
+<div *ngIf="listPage">
+<div >
+  <button nz-button [nzType]="'primary'" (click)="addModal()"><span>增 加</span></button>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Save OR Update" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <app-add-form ></app-add-form>
+  </nz-modal>
+</div>
+  <div id="search-component" style="text-align: right">
+    <nz-input-group [nzSuffix]="suffixIconSearch" id="search-box" >
+      <input type="text" nz-input placeholder="搜索"  #searchBox  (keyup)="search(searchBox.value)" >
+    </nz-input-group>
+    <ng-template #suffixIconSearch >
+      <i nz-icon type="search"></i>
+    </ng-template>
+    <div style="height: 10px" ></div>
+</div>
+
+<div>
+  <nz-table>
+    <thead>
+    <tr>
+      <th>下单批次</th><th>城市Id</th><th>订单编号</th><th>当前版本</th><th>订单类型</th><th>订单状态</th><th>详细</th><th>删除</th><th>修改</th>
+    </tr>
+</thead>
+    <tbody *ngFor="let order of listOrder">
+    <tr >
+      <td>{{order.id}}</td><td>{{order.cityId}}</td><td>{{order.orderno}}</td><td>{{order.ordertype}}</td><td>{{order.verison}}</td><td>{{order.ordertype}}</td>
+      <td>
+        <button nz-button nzType="primary" (click)=" detailOpen(order.id)"><span>详情</span></button>
+        <nz-modal [(nzVisible)]=" isDetail" nzTitle="Detail" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+          <app-order-detail [orderDetailId]="detailId"></app-order-detail>
+        </nz-modal>
+      </td>
+      <td>  <button nz-button nz-popconfirm nzType="primary" nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm(order.id)" (nzOnCancel)="cancel()">Delete</button></td>
+      <td>
+        <button nz-button nzType="primary" (click)=" updateModal(order.id)"><span>修改</span></button>
+        <nz-modal [(nzVisible)]="isVisible" nzTitle="Save OR Update" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+          <app-add-form [orderItem]="detail" ></app-add-form>
+        </nz-modal>
+      </td>
+    </tr>
+    </tbody>
+ <tfoot>
+    <tr>
+      <td><button nz-button   nzType="primary"(click)="findOrders(1)"><span class="badge">首页</span></button></td>
+      <td>  <button nz-button  nzType="primary" (click)="findOrders(listPage.pageNum-1)"><span class="badge">上一页</span></button></td>
+      <td><button nz-button  nzType="primary" nz-button [nzSize]="size" nzType="primary"(click)="findOrders(listPage.pageNum+1)"><span class="badge">下一页</span></button></td>
+      <td><button nz-button  nzType="primary" (click)="findOrders(listPage.total)"><span class="badge">尾页</span></button></td>
+      <td><span class="badge" >{{listPage.pageNum}}</span><span class="badge">/</span><span class="badge">{{pageCount | number: '1.0-0'}}</span></td>
+      <td ><span class="badge" >总条数：</span><span class="badge">{{listPage.total}}</span></td>
+    </tr>
+ </tfoot>
+  </nz-table>
+</div>
+</div>
+<div></div>
+
+

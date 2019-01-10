@@ -1,0 +1,29 @@
+export class OrderItemProduct {
+  id: number;
+  orderid: number;
+  productid: number;
+  productversion: string;
+  productsalespecId: number;
+  productname: string;
+  productsalespec: string;
+  salespecquantity: number;
+  sellunit: string;
+  productspec: string;
+  specquantity: number;
+  packagename: string;
+  unitname: string;
+  salemode: number;
+  isusebonus: boolean;
+  isusecoupon: boolean;
+  iscumulative: boolean;
+  isadditionalpurchase: boolean;
+  supplierid: number;
+  isregionpurchaseproduct: boolean;
+  oldproductid: number;
+  productbusinessclass: number;
+  isinordergive: boolean;
+  ishiddenproduct: boolean;
+  lastmodifytime: string;
+  productinfoid: number;
+  productspecid: number;
+}
