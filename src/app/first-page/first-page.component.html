@@ -1,0 +1,51 @@
+<nz-header>
+  <div style="background: antiquewhite"></div>
+  <div style="text-align: right ">
+
+      <nz-dropdown>
+        <a nz-dropdown>
+          <nz-badge [nzCount]="5" style="margin-right: 24px;">
+            <nz-avatar nzIcon="user" [nzShape]="'square'">
+            </nz-avatar>
+            <i nz-icon type="down"></i>
+          </nz-badge>
+        </a>
+
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item>
+            <button nz-button  nzType="primary" (click)="updateFlag()" >修改密码</button>
+            <nz-modal [(nzVisible)]="isRegister"  nzTitle="Register" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+              <app-update-password></app-update-password>
+            </nz-modal>
+          </li>
+          <li nz-menu-item>
+            <button nz-button  nzType="primary" (click)="quite()">退出登录</button>
+          </li>
+        </ul>
+      </nz-dropdown>
+  </div>
+</nz-header>
+<nz-layout style="height: 100%">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzWidth]="width" [nzReverseArrow]="isReverseArrow" style="background: antiquewhite;">
+    <ul nz-menu [nzTheme]="'yellow'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu>
+        <span title><i class="anticon anticon-user"></i><span class="nav-text"><span (click)="orderClose()">订单管理</span></span></span>
+        <ul>
+          <li nz-menu-item> <span (click)="orderOpen()">订单列表</span></li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-content style="margin:0 16px;">
+      <nz-breadcrumb style="margin:16px 0;">
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div style="padding:24px;height: 100%" >
+        <app-order *ngIf="isFlagOrder"></app-order>
+      </div>
+    </nz-content>
+  </nz-layout>
+   <nz-footer style="text-align: center;" style="background: antiquewhite"></nz-footer>
+</nz-layout>
