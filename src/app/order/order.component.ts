@@ -4,7 +4,7 @@ import {Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {OrderService} from '../order.service';
 import {OrderDetail} from '../entity/orderDetail';
-import {ActivatedRoute} from '@angular/router';
+import { Router} from '@angular/router';
 import {OrderItem} from '../entity/OrderItem';
 
 
@@ -22,14 +22,9 @@ export class OrderComponent implements OnInit {
   _indeterminate = false;
 
 
-  isOpen = false;  //  组件是否显示
   isOrder = false; // 列表是否有数据的标志
   orderType = 0; // 订单类型
-  isDetail = false;
-  detailOrder: OrderDetail;
-  isVisible = false; // 修改，增加弹框标记
   [x: string]: any;
-
   order$: Observable<any>;
   listOrder: Order[]; // 订单列表
   order: Order; //  订单对象
@@ -52,7 +47,7 @@ export class OrderComponent implements OnInit {
   private searchOrder = 0;
   private searchTerms = new Subject<string>();
 
-  constructor(private service: OrderService, private route: ActivatedRoute) {
+  constructor(private service: OrderService) {
   }
 
   ngOnInit() {
@@ -71,51 +66,6 @@ export class OrderComponent implements OnInit {
     this.findOrderList(this.orderType, this.searchOrder);
   }
 
-//  改变标记状态，实现弹框
-  addModal(): void {
-    this.isVisible = true;
-    this.detail = null;
-    this.isOpen = true;
-  }
-
-  updateModal(id: number): void {
-    this.isVisible = true;
-    this.getOrderDetail(id);
-    this.isOpen = true;
-  }
-
-  detailOpen(id: number): void {
-    this.isDetail = true;
-    this.service.getOneUser(id).subscribe(data => {
-      this.detailOrder = data;
-    });
-    this.isOpen = true;
-
-  }
-
-  //  确认提交
-  handleOk(): void {
-    this.isVisible = false;
-    this.isDetail = false;
-    this.isOpen = false;
-    this.detailOrder = null;
-  }
-
-  //  取消弹框
-  handleCancel(): void {
-    this.isVisible = false;
-    this.isDetail = false;
-    this.isOpen = false;
-    this.detailOrder = null;
-  }
-
-
-  getOrderDetail(id: number): void {
-    this.service.getOrderItem(id)
-      .subscribe(data => {
-        this.detail = data;
-      });
-  }
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -169,15 +119,6 @@ export class OrderComponent implements OnInit {
   update(user: Order): void {
     this.service.updateUser(user);
     this.findOrderList(1, 0);
-  }
-
-  // 消息确认按钮
-  /*cancel(): void {
-  }*/
-
-  confirm(id: number): void {
-    this.listOrder = null;
-    this.delete(id);
   }
 
 

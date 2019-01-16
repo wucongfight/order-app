@@ -1,5 +1,5 @@
 
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" style="margin: auto;height: 100%;width:100% ">
 
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="id" nzRequired>
@@ -8,7 +8,7 @@
             <i nz-icon nz-tooltip nzTitle="What do you want other to call you" type="question-circle" theme="outline"></i>
           </span>
     </nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
       <input nz-input id="id" formControlName="id" [placeholder]="orderItem?.id" >
       <nz-form-explain *ngIf="validateForm.get('id').dirty && validateForm.get('id').errors">Please input your id!</nz-form-explain>
     </nz-form-control>
@@ -68,9 +68,9 @@
       <button nz-button nzType="primary" type="submit" >Submit</button>
       <span> </span>
       <button nz-button nzType="primary" type="reset">Reset</button>
+    <a routerLink="/order" nz-button nzType="primary">首页</a>
     </div>
-
     </nz-form-control>
   </nz-form-item>
 </form>
-
+<router-outlet></router-outlet>

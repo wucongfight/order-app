@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
 import {OrderDetail} from '../entity/orderDetail';
 import {OrderService} from '../order.service';
 
@@ -8,21 +7,27 @@ import {OrderService} from '../order.service';
   selector: 'app-order-detail',
   templateUrl: './order-detail.component.html',
   styleUrls: ['./order-detail.component.css'],
-  providers: [OrderDetail]
+
 })
 export class OrderDetailComponent implements OnInit {
-  title = 'order-detail';
-  @Input() orderDetail: OrderDetail;
+  orderDetail: OrderDetail;
+  private id: number;
 
-  constructor(
+  constructor(private route: ActivatedRoute,
+              private  service: OrderService
   ) {
   }
 
   ngOnInit(): void {
-
+// @ts-ignore
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.service.getOneUser(this.id).subscribe(data => {
+      this.orderDetail = data;
+      if (this.orderDetail.orderItem === null || this.orderDetail.orderItemAmount === null || this.orderDetail.orderItemPrice === null || this.orderDetail.orderItemProduct === null) {
+        this.orderDetail = null;
+      }
+    });
   }
-
-
 
 
 }

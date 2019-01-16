@@ -5,11 +5,7 @@
         <button nz-button [disabled]="_disabledButton" [nzType]="'primary'" [nzLoading]="_operating" (click)="deleteAll()">DeleteAll</button>
         <span style="margin-left: 8px;" *ngIf="_checkedNumber">Selected {{_checkedNumber}} items</span>
       </li>
-      <li nz-menu-item  (click)="addModal()"><span><a routerLink="/add-order">增 加</a></span>
-       <!-- <nz-modal [(nzVisible)]="isVisible" nzTitle="Save OR Update" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-         &lt;!&ndash; <app-add-form *ngIf="isOpen" ></app-add-form>&ndash;&gt;
-
-        </nz-modal>-->
+      <li nz-menu-item  ><a routerLink="/order-add/{{0}}"><button nz-button nzType="primary">增 加</button></a>
         <router-outlet></router-outlet>
       </li>
       <li nz-menu-item><nz-cascader
@@ -25,14 +21,8 @@
         </ng-template>
       </li>
     </ul>
-
-
-
-
-
-
-
   </nz-header>
+  <div style="height: 10px"></div>
 <nz-layout>
   <nz-table #nzTable [nzData]="listOrder"  [nzPageSize]="6" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
     <thead nz-thead>
@@ -53,17 +43,12 @@
 
       <td>{{order.id}}</td><td>{{order.cityId}}</td><td>{{order.orderno}}</td><td>{{order.ordertype}}</td><td>{{order.verison}}</td><td>{{order.ordertype}}</td>
       <td>
-        <button nz-button nzType="primary" (click)=" detailOpen(order.id)"><span>详情</span></button>
-        <nz-modal [(nzVisible)]="isDetail" nzTitle="Detail" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-          <app-order-detail [orderDetail]="detailOrder"  *ngIf="isOpen" ></app-order-detail>
-        </nz-modal>
+
+        <a routerLink="/order-detail/{{order.id}}" ><button nz-button nzType="primary">详情</button></a>
       </td>
-      <td>  <button nz-button nz-popconfirm nzType="primary" nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm(order.id)" (nzOnCancel)="cancel()">Delete</button></td>
+      <td>  <a><button nz-button nz-popconfirm nzType="primary" nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm(order.id)" (nzOnCancel)="cancel()">Delete</button></a></td>
       <td>
-        <button nz-button nzType="primary" (click)=" updateModal(order.id)"><span>修改</span></button>
-        <nz-modal [(nzVisible)]="isVisible" nzTitle="Save OR Update" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-          <app-add-form [orderItem]="detail" *ngIf="isOpen"></app-add-form>
-        </nz-modal>
+        <a routerLink="/order-add/{{order.id}}" ><button nz-button nzType="primary">修改</button></a>
       </td>
     </tr>
     </tbody>
@@ -71,5 +56,6 @@
 </nz-layout>
 </div>
 <div *ngIf="isOrder" style="text-align: center"><p style="color: black">暂无数据</p></div>
+
 
 

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
-import {PageInfo} from './entity/pageInfo';
 import {OrderDetail} from './entity/orderDetail';
 import {Order} from './entity/order';
 import {throwError} from 'rxjs/internal/observable/throwError';
