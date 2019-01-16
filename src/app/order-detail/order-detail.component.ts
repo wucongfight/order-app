@@ -12,26 +12,17 @@ import {OrderService} from '../order.service';
 })
 export class OrderDetailComponent implements OnInit {
   title = 'order-detail';
-  @Input() orderDetailId: number;
+  @Input() orderDetail: OrderDetail;
 
   constructor(
-    private route: ActivatedRoute,
-    private service: OrderService,
-    private orderDetail: OrderDetail,
   ) {
   }
 
   ngOnInit(): void {
-    this.getOrderDetail(this.orderDetailId);
+
   }
 
-  getOrderDetail(id: number): void {
 
-    this.service.getOneUser(1)
-      .subscribe(data => {
-        return this.orderDetail = data;
-      });
-  }
 
 
 }

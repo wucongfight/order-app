@@ -9,7 +9,7 @@
     <nz-table >
     <thead><tr><th>原价</th><th>成本价</th><th>销售价</th><th>立减价格</th></tr></thead>
     <tbody>
-  <tr><td>{{orderDetail.orderItem.id}}</td><td>{{orderDetail.orderItem.orderid}}</td><td>{{orderDetail.orderItem.sourceId}}</td><td>{{orderDetail.orderItem.remark}}</td></tr></tbody>
+  <tr><td>{{orderDetail.orderItemPrice.id}}</td><td>{{orderDetail.orderItemPrice.orderid}}</td><td>{{orderDetail.orderItemPrice.sourceId}}</td><td>{{orderDetail.orderItemPrice.remark}}</td></tr></tbody>
       <tfoot></tfoot></nz-table>
       <nz-table >
     <thead><tr><th>产品总价减价</th><th>商品优惠卷减价金额</th><th>商品红包减价金额</th><th>订单满减金额</th></tr></thead>
@@ -21,5 +21,5 @@
     <tbody>
   <tr><td>{{orderDetail.orderItemProduct.productid}}</td><td>{{orderDetail.orderItemProduct. productversion}}</td><td>{{orderDetail.orderItemProduct. productsalespecId}}</td><td>{{orderDetail.orderItemProduct.productname}}</td></tr></tbody>
        </nz-table>
-
 </div>
+<div *ngIf="!orderDetail" style="text-align: center"><p style="color: black">暂无数据</p></div>

@@ -11,6 +11,10 @@ import {OrderComponent} from './order/order.component';
 import {AppRoutingModule} from './app-routing.module';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
 import { AddFormComponent } from './add-form/add-form.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { FirstPageComponent } from './first-page/first-page.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -19,6 +23,10 @@ registerLocaleData(zh);
     OrderComponent,
     AppComponent,
     AddFormComponent,
+    UserLoginComponent,
+    UserRegisterComponent,
+    FirstPageComponent,
+    UpdatePasswordComponent,
   ],
   imports: [
     ReactiveFormsModule,

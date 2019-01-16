@@ -4,7 +4,6 @@ import {Observable} from 'rxjs/internal/Observable';
 import {PageInfo} from './entity/pageInfo';
 import {OrderDetail} from './entity/orderDetail';
 import {Order} from './entity/order';
-import {of} from 'rxjs/internal/observable/of';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {OrderItem} from './entity/OrderItem';
 const httpOptions = {
@@ -20,8 +19,8 @@ export class OrderService {
   }
 
   // 获取列表数据
-  getUserList(pageNu: number, searchOrder: number): Observable<PageInfo> {
-    return this.httpClient.get<PageInfo>(/*'/api/orderItem/order'*/ this.serviceUrl + `/${pageNu}/${searchOrder}`, httpOptions);
+  getOrderList(orderType: number, searchOrder: number): Observable<Order[]> {
+    return this.httpClient.get<Order[]>( '/orderItem/orders' + `/${orderType}/${searchOrder}`, httpOptions);
   }
 
   // 获取单个数据
@@ -44,17 +43,7 @@ export class OrderService {
     return this.httpClient.put( /*'/api/orderItem/order'*/this.serviceUrl , user, httpOptions);
   }
 
-  // 搜索
-  searchOrder(term: string): Observable<PageInfo> {
-    if (term.trim()) {
-      if (term == null || isNaN(Number.parseInt(term, 10))) {
-        term = '0';
-      }
-      return this.httpClient.get<PageInfo>(/*`/api/orderItem/order/?cityId=${term}`*/this.serviceUrl + `/1/${Number.parseInt(term, 10)}`);
-    } else {
-      return of();
-    }
-  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -71,7 +60,7 @@ export class OrderService {
       'Something bad happened; please try again later.');
   }
   //  查询订单项信息
-  getOrdeItemr(id: number) {
+  getOrderItem(id: number) {
     return this.httpClient.get<OrderItem>( this.serviceUrl +  `/orderItem/${id}`, httpOptions);
   }
 }
