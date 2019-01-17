@@ -6,24 +6,29 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./first-page.component.css']
 })
 export class FirstPageComponent implements OnInit {
-  @Output()isQuite: EventEmitter<boolean>  = new EventEmitter();
+  @Output() isQuite: EventEmitter<boolean> = new EventEmitter();
   isRegister = false;
   isFlagOrder = false;
   isCollapsed = false;
   isReverseArrow = false;
   width = 200;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
 //  显示列表组件
   orderOpen() {
     this.isFlagOrder = true;
   }
+
   //  关闭显示列表组件
   orderClose() {
     this.isFlagOrder = false;
   }
+
   //  修改修改密码的标记
   updateFlag() {
     this.isRegister = true;
@@ -33,6 +38,7 @@ export class FirstPageComponent implements OnInit {
   handleOk(): void {
     this.isRegister = false;
   }
+
   //  取消弹框
   handleCancel(): void {
     this.isRegister = false;
@@ -40,6 +46,6 @@ export class FirstPageComponent implements OnInit {
 
   //  推出登录标记
   quite(): void {
-    this.isQuite .emit(true);
+    this.isQuite.emit(true);
   }
 }

@@ -1,9 +1,10 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {OrderItem} from '../entity/OrderItem';
-import {ActivatedRoute, Params, Route, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {OrderService} from '../order.service';
+
 const httpOptions = {
   headers: new HttpHeaders({'content-Type': 'application/json'})
 };
@@ -14,10 +15,10 @@ const httpOptions = {
   styleUrls: ['./add-form.component.css']
 })
 export class AddFormComponent implements OnInit {
-  private  id: number;
-  private  validateForm: FormGroup;
-  private  orderItem: OrderItem;
-  private  serviceUrl = `/orderItem/order`;
+  private id: number;
+  private validateForm: FormGroup;
+  private orderItem: OrderItem;
+  private serviceUrl = `/orderItem/order`;
 
 
   constructor(private fb: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute, private orderService: OrderService) {
@@ -28,13 +29,13 @@ export class AddFormComponent implements OnInit {
   ngOnInit() {
     this.updateDetail();
     this.validateForm = this.fb.group({
-      id: ['', [ Validators.required ]],
-      orderid: ['', [ Validators.required ]],
-      remark: ['', [ Validators.required ]],
-      sourcetype: [''],
-      producttype: [''],      sourceId: [''],
-      createtime: [''],
-      lastmodifytime: [''],
+      id: ['', [Validators.required]],
+      orderId: ['', [Validators.required]],
+      remark: ['', [Validators.required]],
+      sourceType: [''],
+      productType: [''], sourceId: [''],
+      createTime: [''],
+      lastModifyTime: [''],
 
     });
   }
@@ -42,23 +43,22 @@ export class AddFormComponent implements OnInit {
 
   submitForm(): void {
     console.warn(this.validateForm.value);
-    const  orderItem = this.validateForm.value;
+    const orderItem = this.validateForm.value;
     this.httpClient.post(this.serviceUrl + `/add`, orderItem, httpOptions).subscribe();
 
   }
 
-updateDetail() {
-  // @ts-ignore
-  this.id = this.route.snapshot.paramMap.get('id');
-  if ( this.id === 0) {
-  this.orderItem = null ;
-  } else {
-    this.orderService.getOrderItem(this.id).subscribe(data => {
-      this.orderItem = data;
-    });
+  updateDetail() {
+    // @ts-ignore
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id === 0) {
+      this.orderItem = null;
+    } else {
+      this.orderService.getOrderItem(this.id).subscribe(data => {
+        this.orderItem = data;
+      });
+    }
   }
-}
-
 
 
 }

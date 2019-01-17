@@ -1,10 +1,10 @@
 export class OrderItem {
   id: number;
-  orderid: number;
+  orderId: number;
   remark: string;
-  sourcetype: number;
+  sourceType: number;
   sourceId: string;
-  createtime: string;
-  producttype: number;
-  lastmodifytime: string;
+  createTime: string;
+  productType: number;
+  lastModifyTime: string;
 }

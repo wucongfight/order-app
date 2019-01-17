@@ -1,143 +1,142 @@
-
 export class Order {
-   id: number;
+  id: number;
 
-   cityId: number;
+  cityId: number;
 
-   orderno: string;
+  orderNo: string;
 
-   verison: string;
+  verison: string;
 
-   ordertype: number;
+  orderType: number;
 
-  orderclassify: number;
+  orderClassify: number;
 
-   state: number;
+  state: number;
 
- stateuser: number;
+  stateUser: number;
 
- givecouponamount: number;
+  giveCoupOnAmount: number;
 
-   sysremark: string;
+  sysRemark: string;
 
-  remarkuser: string;
+  remarkUser: string;
 
- usercancelreason: string;
+  userCancelReason: string;
 
- remarkservice: string;
+  remarkService: string;
 
-  paytype: number;
+  payType: number;
 
-  givewinescore: number;
+  giveWineScore: number;
 
-  costwinescore: number;
+  costWineScore: number;
 
-  orderamount: number;
+  orderAmount: number;
 
-  payableamount: number;
+  payAbleAmount: number;
 
-  reduceamount: number;
+  reduceAmount: number;
 
-   usecouponamount: number;
+  usecouponamount: number;
 
-  givebonusamount: number;
+  giveBonusAmount: number;
 
-  usebonusamount: number;
+  useBonusAmount: number;
 
-  productreduceamount: number;
+  productReduceAmount: number;
 
-  haspayment: number;
+  hasPayment: number;
 
   contact: string;
 
- addressId: number;
+  addressId: number;
 
   province: string;
 
- city: string;
+  city: string;
 
   county: string;
 
   street: string;
 
- detailaddress: string;
+  detailAddress: string;
 
   phone: string;
 
- zipcode: string;
+  zipcode: string;
 
- istestorder: number;
+  istestorder: number;
 
- userid: number;
- salesmanid: number;
+  userid: number;
+  salesmanid: number;
 
-orderreducationruleId: number;
+  orderreducationruleId: number;
 
- qrcodefileid: number;
+  qrcodefileid: number;
 
   deliverymode: number;
 
- createtime: number;
+  createTime: number;
 
- createuserid: number;
+  createUserid: number;
 
- lastupdatetime: string;
+  lastUpDateTime: string;
 
- lastupdateuserid: string;
+  lastUpDateUserId: string;
 
-  ordercreatetime: string;
+  orderCreateTime: string;
 
-  orderaudittime: string;
+  orderAuditTime: string;
 
-   orderprinttime: string;
+  orderPrintTime: string;
 
- orderdelivertime: string;
+  orderDeliverime: string;
 
- ordercanceltime: string;
+  ordercCancelTime: string;
 
- ordercompletetime: string;
+  orderCompleteTime: string;
 
- ordersynctime: string;
+  orderSyncTime: string;
 
-  paymentstate: number;
+  paymentState: number;
 
- orderconfirmtime: string;
+  orderConfirmTime: string;
 
- orderbatchId: string;
+  orderBatchId: string;
 
- exactpayamount: string;
+  exactPayAmount: string;
 
- username: string;
+  userName: string;
 
-  usermobileno: string;
+  userMobileno: string;
 
-  usercompanyname: string;
+  userCompanyName: string;
 
- selfpickupreduceamount: number;
+  selfPickUpReduceAmount: number;
 
-  orderattachedgiftruleId: number;
+  orderAttachedGiftRuleId: number;
 
-   shopId: number;
+  shopId: number;
 
-  pickupWarehouseId: number;
+  pickUpWarehouseId: number;
 
- useawardbonusamount: number;
+  useAwardBonusAmount: number;
 
- userewardbonusamount: number;
+  userEwardBonusAmount: number;
 
-   usecouponcodeamount: number;
+  useCoupOnCodeAmount: number;
 
-  lastmodifytime: number;
+  lastModifyTime: number;
 
-  orderitemcount: number;
+  orderItemCount: number;
 
-  salesmandeptid: number;
+  saleSmandeptId: number;
 
-  onlinesalesmanid: number;
+  onlineSaleSmanId: number;
 
- onlinesalesmandeptid: number;
+  onlineSaleSmanDeptId: number;
 
- areaId: number;
+  areaId: number;
 
 
 }

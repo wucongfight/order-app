@@ -1,10 +1,10 @@
 export class OrderItemProduct {
   id: number;
-  orderid: number;
-  productid: number;
-  productversion: string;
-  productsalespecId: number;
-  productname: string;
+   orderId: number;
+  productId: number;
+  productVersion: string;
+  productSaleSpecId: number;
+  productName: string;
   productsalespec: string;
   salespecquantity: number;
   sellunit: string;
@@ -23,7 +23,7 @@ export class OrderItemProduct {
   productbusinessclass: number;
   isinordergive: boolean;
   ishiddenproduct: boolean;
-  lastmodifytime: string;
+  lastModifyTime: string;
   productinfoid: number;
   productspecid: number;
 }

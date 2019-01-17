@@ -1,10 +1,8 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Order} from '../entity/order';
 import {Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {OrderService} from '../order.service';
-import {OrderDetail} from '../entity/orderDetail';
-import { Router} from '@angular/router';
 import {OrderItem} from '../entity/OrderItem';
 
 
@@ -25,6 +23,7 @@ export class OrderComponent implements OnInit {
   isOrder = false; // 列表是否有数据的标志
   orderType = 0; // 订单类型
   [x: string]: any;
+
   order$: Observable<any>;
   listOrder: Order[]; // 订单列表
   order: Order; //  订单对象
@@ -58,6 +57,11 @@ export class OrderComponent implements OnInit {
   // 删除全部
   deleteAll() {
     alert(1243);
+  }
+
+// 删除订单
+  confirm(id: number) {
+    this.delete(id);
   }
 
 // 订单类型查询
@@ -126,33 +130,14 @@ export class OrderComponent implements OnInit {
     this._displayData = $event;
   }
 
-  /*_refreshStatus() {
+  _refreshStatus() {
     const allChecked = this._displayData.every(value => value.checked === true);
     const allUnChecked = this._displayData.every(value => !value.checked);
     this._allChecked = allChecked;
     this._indeterminate = (!allChecked) && (!allUnChecked);
     this._disabledButton = !this._dataSet.some(value => value.checked);
     this._checkedNumber = this._dataSet.filter(value => value.checked).length;
-  }*/
-
-  /* _checkAll(value) {
-     if (value) {
-       this._displayData.forEach(data => data.checked = true);
-     } else {
-       this._displayData.forEach(data => data.checked = false);
-     }
-     this._refreshStatus();
-   }
-
-   _operateData() {
-     this._operating = true;
-     setTimeout(_ => {
-       this._dataSet.forEach(value => value.checked = false);
-       this._refreshStatus();
-       this._operating = false;
-     }, 1000);
-   }
- */
+  }
 
 
 }

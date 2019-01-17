@@ -7,6 +7,7 @@
   position: relative;
   top: -3px;
 }
+
 .order .badge {
   display: inline-block;
   font-size: small;
@@ -21,7 +22,8 @@
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
- a {
+
+a {
   padding: 5px 10px;
   text-decoration: none;
   margin-top: 10px;
@@ -29,22 +31,27 @@
   background-color: #eee;
   border-radius: 4px;
 }
- a:visited, a:link {
+
+a:visited, a:link {
   color: #607D8B;
 }
- a:hover {
+
+a:hover {
   color: #039be5;
   background-color: #CFD8DC;
 }
- a.active {
+
+a.active {
   color: #039be5;
 }
+
 #search-box {
   width: 300px;
   height: 30px;
 }
-table{
-  border-right:1px;
+
+table {
+  border-right: 1px;
   cursor: pointer;
   position: relative;
   left: 1em;
@@ -54,15 +61,19 @@ table{
   height: 1.6em;
   border-radius: 4px;
 }
-td{
+
+td {
   width: 100px;
 }
-a{
+
+a {
   color: #607D8B;
 }
-div{
+
+div {
   margin: auto;
 }
+
 [nz-button] {
   margin-right: 8px;
   margin-bottom: 12px;

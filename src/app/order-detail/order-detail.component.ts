@@ -23,7 +23,8 @@ export class OrderDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.service.getOneUser(this.id).subscribe(data => {
       this.orderDetail = data;
-      if (this.orderDetail.orderItem === null || this.orderDetail.orderItemAmount === null || this.orderDetail.orderItemPrice === null || this.orderDetail.orderItemProduct === null) {
+      if (this.orderDetail.orderItem === null || this.orderDetail.orderItemAmount === null ||
+        this.orderDetail.orderItemPrice === null || this.orderDetail.orderItemProduct === null) {
         this.orderDetail = null;
       }
     });

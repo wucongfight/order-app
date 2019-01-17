@@ -1,9 +1,9 @@
 export class OrderItemAmount {
   id: number;
-  orderid: number;
-  reduceproductamount: number;
-  reducecouponamount: number;
-  reducebonusamount: number;
+   orderId: number;
+  reduceProductAmount: number;
+  reduceCoupOnAmount: number;
+  reduceBonusAmount: number;
   reduceorderamount: number;
   discount: number;
   totalamount: number;
@@ -18,7 +18,7 @@ export class OrderItemAmount {
   selfpickupreduceamount: number;
   reducerewardbonusamount: number;
   reducecouponcodeamount: number;
-  lastmodifytime: string;
+  lastModifyTime: string;
   givebonusamount: number;
 
 
