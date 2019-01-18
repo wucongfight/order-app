@@ -3,10 +3,8 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <app-user-login *ngIf="isLogin" (isLogin)="updateState($event)"></app-user-login>
-    <app-first-page *ngIf="isIf" (isQuite)="quite($event)"></app-first-page>
-  `
+  template: `<app-user-login *ngIf="isLogin" (isLogin)="updateState($event)"></app-user-login>
+  <app-first-page *ngIf="isIf" (isQuite)="quite($event)"></app-first-page>`
   ,
   styles: []
 })

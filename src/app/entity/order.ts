@@ -138,5 +138,7 @@ export class Order {
 
   areaId: number;
 
+   checked: false;
+
 
 }

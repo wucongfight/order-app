@@ -20,7 +20,6 @@ export class UserLoginComponent implements OnInit {
 
   // 提交表单
   submitForm(): void {
-    alert(JSON.stringify(this.validateForm.value));
     this.httpClient.post<boolean>(this.url, this.validateForm.value, httpOptions).subscribe(data => {
       // 子组件向父组件传递消息
       this.isLogin.emit(data);

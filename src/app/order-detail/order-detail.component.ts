@@ -10,6 +10,7 @@ import {OrderService} from '../order.service';
 
 })
 export class OrderDetailComponent implements OnInit {
+  detail: OrderDetail[];
   orderDetail: OrderDetail;
   private id: number;
 
@@ -19,15 +20,14 @@ export class OrderDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const  ad = {};
 // @ts-ignore
     this.id = this.route.snapshot.paramMap.get('id');
     this.service.getOneUser(this.id).subscribe(data => {
-      this.orderDetail = data;
-      if (this.orderDetail.orderItem === null || this.orderDetail.orderItemAmount === null ||
-        this.orderDetail.orderItemPrice === null || this.orderDetail.orderItemProduct === null) {
-        this.orderDetail = null;
+        this.orderDetail = data;
+this.detail = [this.orderDetail];
       }
-    });
+    );
   }
 
 

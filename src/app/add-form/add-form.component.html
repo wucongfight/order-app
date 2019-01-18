@@ -9,7 +9,7 @@
           </span>
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="id" formControlName="id" [placeholder]="orderItem?.id">
+      <input nz-input id="id" formControlName="id" [placeholder]="orderItem?.id" >
       <nz-form-explain *ngIf="validateForm.get('id').dirty && validateForm.get('id').errors">Please input your id!
       </nz-form-explain>
     </nz-form-control>
@@ -22,8 +22,7 @@
         orderId !
       </nz-form-explain>
     </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
+
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="remark" nzRequired>Remark</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="remark" formControlName="remark" [placeholder]="orderItem?.remark">
@@ -89,4 +88,3 @@
     </nz-form-control>
   </nz-form-item>
 </form>
-<router-outlet></router-outlet>

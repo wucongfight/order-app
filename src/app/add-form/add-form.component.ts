@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {OrderItem} from '../entity/OrderItem';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {OrderService} from '../order.service';
 
 const httpOptions = {
@@ -21,7 +21,8 @@ export class AddFormComponent implements OnInit {
   private serviceUrl = `/orderItem/order`;
 
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute, private orderService: OrderService) {
+  constructor(private fb: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute,
+              private orderService: OrderService, private router: Router) {
 
   }
 
@@ -33,7 +34,8 @@ export class AddFormComponent implements OnInit {
       orderId: ['', [Validators.required]],
       remark: ['', [Validators.required]],
       sourceType: [''],
-      productType: [''], sourceId: [''],
+      productType: [''],
+      sourceId: [''],
       createTime: [''],
       lastModifyTime: [''],
 
@@ -45,7 +47,8 @@ export class AddFormComponent implements OnInit {
     console.warn(this.validateForm.value);
     const orderItem = this.validateForm.value;
     this.httpClient.post(this.serviceUrl + `/add`, orderItem, httpOptions).subscribe();
-
+    // 跳转到列表项
+    this.router.navigate(['/order']);
   }
 
   updateDetail() {

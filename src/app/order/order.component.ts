@@ -12,15 +12,9 @@ import {OrderItem} from '../entity/OrderItem';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  _allChecked = false;
-  _disabledButton = true;
-  _checkedNumber = 0;
-  _displayData: Array<any> = [];
-  _operating = false;
-  _indeterminate = false;
-
-
-  isOrder = false; // 列表是否有数据的标志
+  checkbox: true;
+  allChecked: false;
+  indeterminate = false;
   orderType = 0; // 订单类型
   [x: string]: any;
 
@@ -42,7 +36,6 @@ export class OrderComponent implements OnInit {
       label: '未接单',
       isLeaf: true,
     }];
-  private detail: OrderItem;
   private searchOrder = 0;
   private searchTerms = new Subject<string>();
 
@@ -54,14 +47,28 @@ export class OrderComponent implements OnInit {
 
   }
 
-  // 删除全部
+// 全部删除
   deleteAll() {
-    alert(1243);
+
   }
 
-// 删除订单
-  confirm(id: number) {
-    this.delete(id);
+
+  refreshStatus(): void {
+
+    // @ts-ignore
+    const allChecked = this.listOrder.every(value => value.checked === true);
+    const allUnChecked = this.listOrder.every(value => !value.checked);
+    // @ts-ignore
+    this.allChecked = allChecked;
+    this.indeterminate = (!allChecked) && (!allUnChecked);
+  }
+
+  checkAll(value: boolean): void {
+    this.listOrder.forEach(data => {
+      // @ts-ignore
+      data.checked = value;
+    });
+    this.refreshStatus();
   }
 
 // 订单类型查询
@@ -70,6 +77,10 @@ export class OrderComponent implements OnInit {
     this.findOrderList(this.orderType, this.searchOrder);
   }
 
+  // 提交删除
+  confirm(id: number) {
+    this.delete(id);
+  }
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -89,9 +100,6 @@ export class OrderComponent implements OnInit {
       switchMap((term: string) => this.service.getOrderList(this.orderType, Number.parseInt(term, 10))),
     ).subscribe(data => {
       this.listOrder = data;
-      if (data == null) {
-        this.isOrder = true;
-      }
     });
   }
 
@@ -99,9 +107,6 @@ export class OrderComponent implements OnInit {
   findOrderList(orderType: number, searchOrder: number): void {
     this.service.getOrderList(orderType, searchOrder).subscribe((data) => {
       this.listOrder = data;
-      if (data == null) {
-        this.isOrder = true;
-      }
     });
   }
 
@@ -123,20 +128,6 @@ export class OrderComponent implements OnInit {
   update(user: Order): void {
     this.service.updateUser(user);
     this.findOrderList(1, 0);
-  }
-
-
-  _displayDataChange($event) {
-    this._displayData = $event;
-  }
-
-  _refreshStatus() {
-    const allChecked = this._displayData.every(value => value.checked === true);
-    const allUnChecked = this._displayData.every(value => !value.checked);
-    this._allChecked = allChecked;
-    this._indeterminate = (!allChecked) && (!allUnChecked);
-    this._disabledButton = !this._dataSet.some(value => value.checked);
-    this._checkedNumber = this._dataSet.filter(value => value.checked).length;
   }
 
 
