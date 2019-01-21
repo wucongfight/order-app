@@ -1,3 +1,4 @@
+<div *ngIf="listOrder">
 <div nz-row>
   <div nz-col nzSpan="4" style="text-align: left">
     <a routerLink="/order-add/{{0}}">
@@ -43,7 +44,7 @@
     <tbody nz-tbody>
     <tr nz-tbody-tr *ngFor="let order of nzTable.data">
       <td nzShowCheckbox  [(nzChecked)]="order.checked" (nzCheckedChange)="refreshStatus()"></td>
-      <td>{{order.id}}</td>
+      <td>{{order.idNumber}}</td>
       <td>{{order.cityId}}</td>
       <td>{{order.orderNo}}</td>
       <td>{{order.orderType}}</td>
@@ -51,17 +52,17 @@
       <td>{{order.orderType}}</td>
       <td>
 
-        <a routerLink="/order-detail/{{order.id}}">
+        <a routerLink="/order-detail/{{order.idNumber}}">
           <button nz-button nzType="primary">详情</button>
         </a>
       </td>
       <td><a>
         <button nz-button nz-popconfirm nzType="primary" nzTitle="Are you sure delete this task?"
-                (nzOnConfirm)="confirm(order.id)">Delete
+                (nzOnConfirm)="confirm(order.idNumber)">Delete
         </button>
       </a></td>
       <td>
-        <a routerLink="/order-add/{{order.id}}">
+        <a routerLink="/order-add/{{order.idNumber}}">
           <button nz-button nzType="primary">修改</button>
         </a>
       </td>
@@ -69,5 +70,5 @@
     </tbody>
   </nz-table>
 </nz-layout>
-
+</div>
 

@@ -1,10 +1,10 @@
 export class OrderItemAmount {
   id: number;
-   orderId: number;
+  orderId: number;
   reduceProductAmount: number;
-  reduceCoupOnAmount: number;
+  reduceCouponAmount: number;
   reduceBonusAmount: number;
-  reduceorderamount: number;
+  reduceOrderAmount: number;
   discount: number;
   totalamount: number;
   payamount: number;

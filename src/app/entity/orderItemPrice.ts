@@ -1,16 +1,16 @@
 export class OrderItemPrice {
   id: number;
   orderId: number;
-  originalprice: number;
+  originalPrice: number;
   originalpriceunit: string;
-  costprice: number;
+  costPrice: number;
   costpriceunit: string;
   sellPrice: number;
   sellunit: string;
   minunitprice: number;
   minunitname: string;
   reduceProductPrice: number;
-  reduceProductPriceunit: string;
+  reduceProductPriceUnit: string;
   selltominunitquantity: number;
   maxtominunitquantity: number;
   winescore: number;

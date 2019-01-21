@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient,  HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
-import {OrderDetail} from './entity/orderDetail';
 import {Order} from './entity/order';
 import {OrderItem} from './entity/OrderItem';
 
@@ -24,9 +23,9 @@ export class OrderService {
     return this.httpClient.get<Order[]>('/orderItem/orders' + `/${orderType}/${searchOrder}`, httpOptions);
   }
 
-  // 获取单个数据
-  getOneUser(id: number) {
-    return this.httpClient.get<OrderDetail>(this.serviceUrl + `/detail/${id}`, httpOptions);
+  // 获取订单项数据
+  getOneUser(id: String) {
+    return this.httpClient.get<OrderItem[]>(this.serviceUrl + `/detail/${id}`, httpOptions);
   }
 
   // 添加一个订单
@@ -35,7 +34,7 @@ export class OrderService {
   }
 
   // 删除一个订单
-  deleteUser(id: number) {
+  deleteUser(id: String) {
     alert(id);
     return this.httpClient.delete(this.serviceUrl + `/delete/${id}`, httpOptions);
   }
@@ -46,7 +45,7 @@ export class OrderService {
   }
 
   //  查询订单项信息
-  getOrderItem(id: number) {
+  getOrderItem(id: string) {
     return this.httpClient.get<OrderItem>(this.serviceUrl + `/orderItem/${id}`, httpOptions);
   }
 }

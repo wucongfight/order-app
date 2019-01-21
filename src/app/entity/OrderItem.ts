@@ -1,3 +1,7 @@
+import {OrderItemAmount} from './orderItemAmount';
+import {OrderItemPrice} from './orderItemPrice';
+import {OrderItemProduct} from './orderItemProduct';
+
 export class OrderItem {
   id: number;
   orderId: number;
@@ -7,4 +11,7 @@ export class OrderItem {
   createTime: string;
   productType: number;
   lastModifyTime: string;
+  orderItemProductList: OrderItemProduct[];
+  orderItemPriceList: OrderItemPrice[];
+  orderItemAmountList: OrderItemAmount[];
 }

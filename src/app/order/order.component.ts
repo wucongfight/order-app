@@ -3,7 +3,6 @@ import {Order} from '../entity/order';
 import {Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {OrderService} from '../order.service';
-import {OrderItem} from '../entity/OrderItem';
 
 
 @Component({
@@ -12,17 +11,16 @@ import {OrderItem} from '../entity/OrderItem';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  checkbox: true;
   allChecked: false;
   indeterminate = false;
-  orderType = 0; // 订单类型
+  orderType = -1; // 订单类型
   [x: string]: any;
 
   order$: Observable<any>;
-  listOrder: Order[]; // 订单列表
+  listOrder: Order[] ; // 订单列表
   order: Order; //  订单对象
   _options = [{
-    value: 0,
+    value: -1,
     label: '全部',
     isLeaf: true,
   },
@@ -32,7 +30,7 @@ export class OrderComponent implements OnInit {
       isLeaf: true,
     },
     {
-      value: 2,
+      value: 0,
       label: '未接单',
       isLeaf: true,
     }];
@@ -44,17 +42,14 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.findOrderList(0, 0);
-
   }
 
 // 全部删除
   deleteAll() {
-
   }
 
 
   refreshStatus(): void {
-
     // @ts-ignore
     const allChecked = this.listOrder.every(value => value.checked === true);
     const allUnChecked = this.listOrder.every(value => !value.checked);
@@ -78,7 +73,7 @@ export class OrderComponent implements OnInit {
   }
 
   // 提交删除
-  confirm(id: number) {
+  confirm(id: string) {
     this.delete(id);
   }
 
@@ -119,7 +114,7 @@ export class OrderComponent implements OnInit {
 
   // 删除订单
   // subscribe();如果忘了，将不会向服务器发送请求
-  delete(id: number): void {
+  delete(id: string): void {
     this.service.deleteUser(id).subscribe();
     this.findOrderList(0, 0);
   }

@@ -21,7 +21,7 @@ export class UpdatePasswordComponent implements OnInit {
 
   ngOnInit() {
     this.validateForm = this.fb.group({
-      username: [null, [Validators.required]],
+      userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
       nowPassword: [null, [Validators.required]],
     });

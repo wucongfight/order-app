@@ -1,53 +1,54 @@
 <p style="font-size: 30px;color: #000c17;text-align: left">订单详细信息展示</p>
-<nz-table #nzTable [nzData]="detail">
-  <tbody *ngFor="let orderDetail of nzTable.data">
+<nz-table [nzData]="orderItemList" [nzPageSize]="1" #nzTable>
+  <tbody *ngFor="let orderItem of nzTable.data">
   <tr>
-    <th>ID</th>
-    <th>订单Id</th>
-    <th>订单项来源类型</th>
-    <th>配送系数</th>
+    <td>ID</td>
+    <td>订单Id</td>
+    <td>订单项来源Id</td>
+    <td>订单项来源类型</td>
+  </tr>
+  <tr >
+    <td>{{orderItem.id}}</td>
+    <td>{{orderItem.orderId}}</td>
+    <td>{{orderItem.sourceId}}</td>
+    <td>{{orderItem.sourceType}}</td>
   </tr>
   <tr>
-    <td>{{orderDetail.orderItem.id}}</td>
-    <td>{{orderDetail.orderItem.id}}</td>
-    <td>{{orderDetail.orderItem.sourceId}}</td>
-    <td>{{orderDetail.orderItem.remark}}</td>
+    <td>原价</td>
+    <td>成本价</td>
+    <td>销售价</td>
+    <td>立减价格</td>
+  </tr>
+  <tr *ngFor="let orderItemPrice of orderItem.orderItemPriceList">
+    <td>{{orderItemPrice.originalPrice}}</td>
+    <td>{{orderItemPrice.costPrice}}</td>
+    <td>{{orderItemPrice.sellPrice}}</td>
+    <td>{{orderItemPrice.reduceProductPrice}}</td>
+  </tr>
+
+  <tr>
+    <td>产品总价减价</td>
+    <td>商品优惠卷减价金额</td>
+    <td>商品红包减价金额</td>
+    <td>订单满减金额</td>
+  </tr>
+  <tr *ngFor="let orderItemAmount of orderItem.orderItemAmountList">
+    <td>{{orderItemAmount.reduceCouponAmount}}</td>
+    <td>{{orderItemAmount.reduceProductAmount}}</td>
+    <td>{{orderItemAmount.reduceBonusAmount}}</td>
+    <td>{{orderItemAmount.reduceOrderAmount}}</td>
   </tr>
   <tr>
-    <th>原价</th>
-    <th>成本价</th>
-    <th>销售价</th>
-    <th>立减价格</th>
+    <td>产品skuId</td>
+    <td>产品sku版本号</td>
+    <td>销售规格ID</td>
+    <td>产品名称</td>
   </tr>
-  <tr>
-    <td>{{orderDetail.orderItemPrice.id}}</td>
-    <td>{{orderDetail.orderItemPrice.orderId}}</td>
-    <td>{{orderDetail.orderItemPrice.sellPrice}}</td>
-    <td>{{orderDetail.orderItemPrice.reduceProductPrice}}</td>
-  </tr>
-  <tr>
-    <th>产品总价减价</th>
-    <th>商品优惠卷减价金额</th>
-    <th>商品红包减价金额</th>
-    <th>订单满减金额</th>
-  </tr>
-  <tr>
-    <td>{{orderDetail.orderItemAmount.reduceCoupOnAmount}}</td>
-    <td>{{orderDetail.orderItemAmount.reduceProductAmount}}</td>
-    <td>{{orderDetail.orderItemAmount.reduceBonusAmount}}</td>
-    <td>{{orderDetail.orderItemProduct.productName}}</td>
-  </tr>
-  <tr>
-    <th>产品skuId</th>
-    <th>产品sku版本号</th>
-    <th>销售规格ID</th>
-    <th>产品名称</th>
-  </tr>
-  <tr>
-    <td>{{orderDetail.orderItemProduct.productId}}</td>
-    <td>{{orderDetail.orderItemProduct.productVersion}}</td>
-    <td>{{orderDetail.orderItemProduct.productSaleSpecId}}</td>
-    <td>{{orderDetail.orderItemProduct.productName}}</td>
+  <tr *ngFor="let orderItemProduct of orderItem.orderItemProductList">
+    <td>{{orderItemProduct.productId}}</td>
+    <td>{{orderItemProduct.productVersion}}</td>
+    <td>{{orderItemProduct.productSaleSpecId}}</td>
+    <td>{{orderItemProduct.productName}}</td>
   </tr>
   </tbody>
 </nz-table>

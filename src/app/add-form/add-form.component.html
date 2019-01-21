@@ -1,5 +1,4 @@
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" style="margin: auto;height: 100%;width:100% ">
-
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="id" nzRequired>
           <span>
@@ -9,7 +8,7 @@
           </span>
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="id" formControlName="id" [placeholder]="orderItem?.id" >
+      <input nz-input id="id" formControlName="id" [(ngModel)]="orderItem.id">
       <nz-form-explain *ngIf="validateForm.get('id').dirty && validateForm.get('id').errors">Please input your id!
       </nz-form-explain>
     </nz-form-control>
@@ -17,7 +16,7 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="orderId" nzRequired> orderId</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input formControlName="orderId" id="'orderId'" nz-input [placeholder]="orderItem?.orderId">
+      <input formControlName="orderId" id="'orderId'" nz-input [(ngModel)]="orderItem.orderId">
       <nz-form-explain *ngIf="validateForm.get('orderId').dirty && validateForm.get('orderId').errors">Please input your
         orderId !
       </nz-form-explain>
@@ -25,7 +24,7 @@
 
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="remark" nzRequired>Remark</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="remark" formControlName="remark" [placeholder]="orderItem?.remark">
+      <input nz-input id="remark" formControlName="remark" [(ngModel)]="orderItem.remark">
       <nz-form-explain *ngIf="validateForm.get('remark').dirty && validateForm.get('remark').errors">Please input
         website!
       </nz-form-explain>
@@ -34,8 +33,8 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sourceType" nzRequired> sourceType</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="sourceType" formControlName="sourceType" [placeholder]="orderItem?.sourceType">
-      <nz-form-explain *ngIf="validateForm.get('sourceType').dirty && validateForm.get(' sourceType').errors">Please
+      <input nz-input id="sourceType" formControlName="sourceType" [(ngModel)]="orderItem.sourceType">
+      <nz-form-explain *ngIf="validateForm.get('sourceType').dirty && validateForm.get('sourceType').errors">Please
         input sourceType!
       </nz-form-explain>
     </nz-form-control>
@@ -44,7 +43,7 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sourceId" nzRequired> SourceId</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="sourceId" formControlName="sourceId" [placeholder]="orderItem?.sourceId">
+      <input nz-input id="sourceId" formControlName="sourceId" [(ngModel)]="orderItem.sourceId">
       <nz-form-explain *ngIf="validateForm.get('sourceId').dirty && validateForm.get('sourceId').errors">Please input
         sourceId!
       </nz-form-explain>
@@ -53,7 +52,7 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="createTime" nzRequired>createTime</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <nz-date-picker formControlName="createTime"></nz-date-picker>
+      <nz-date-picker formControlName="createTime" [(ngModel)]="orderItem.createTime"></nz-date-picker>
       <nz-form-explain *ngIf="validateForm.get('createTime').dirty && validateForm.get('createTime').errors">Please
         input createTime!
       </nz-form-explain>
@@ -62,7 +61,7 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="productType" [nzRequired]>productType</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="productType" formControlName="productType" [placeholder]="orderItem?.productType">
+      <input nz-input id="productType" formControlName="productType" [(ngModel)]="orderItem.productType">
       <nz-form-explain *ngIf="validateForm.get('productType').dirty && validateForm.get('productType').errors">Please
         input productType!
       </nz-form-explain>
@@ -71,7 +70,7 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="lastModifyTime" nzRequired>lastModifyTime</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <nz-date-picker formControlName="lastModifyTime"></nz-date-picker>
+      <nz-date-picker formControlName="lastModifyTime" [(ngModel)]="orderItem.lastModifyTime"></nz-date-picker>
       <nz-form-explain *ngIf="validateForm.get('lastModifyTime').dirty && validateForm.get('lastModifyTime').errors">
         Please input lastModifyTime!
       </nz-form-explain>

@@ -1,5 +1,5 @@
 export class Order {
-  id: number;
+  idNumber: string;
 
   cityId: number;
 
@@ -138,7 +138,7 @@ export class Order {
 
   areaId: number;
 
-   checked: false;
+  checked: false;
 
 
 }

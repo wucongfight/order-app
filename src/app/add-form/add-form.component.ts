@@ -15,7 +15,7 @@ const httpOptions = {
   styleUrls: ['./add-form.component.css']
 })
 export class AddFormComponent implements OnInit {
-  private id: number;
+  private id: string;
   private validateForm: FormGroup;
   private orderItem: OrderItem;
   private serviceUrl = `/orderItem/order`;
@@ -28,6 +28,7 @@ export class AddFormComponent implements OnInit {
 
 
   ngOnInit() {
+    this.orderItem = new OrderItem();
     this.updateDetail();
     this.validateForm = this.fb.group({
       id: ['', [Validators.required]],
@@ -54,14 +55,12 @@ export class AddFormComponent implements OnInit {
   updateDetail() {
     // @ts-ignore
     this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id === 0) {
-      this.orderItem = null;
-    } else {
+    if ( this.id !== '0') {
       this.orderService.getOrderItem(this.id).subscribe(data => {
         this.orderItem = data;
       });
     }
-  }
 
+  }
 
 }

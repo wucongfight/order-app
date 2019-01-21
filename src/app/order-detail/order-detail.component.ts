@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {OrderDetail} from '../entity/orderDetail';
 import {OrderService} from '../order.service';
+import {OrderItem} from '../entity/OrderItem';
 
 @Component({
   selector: 'app-order-detail',
@@ -10,9 +10,8 @@ import {OrderService} from '../order.service';
 
 })
 export class OrderDetailComponent implements OnInit {
-  detail: OrderDetail[];
-  orderDetail: OrderDetail;
-  private id: number;
+  orderItemList: OrderItem[];
+  private id: string;
 
   constructor(private route: ActivatedRoute,
               private  service: OrderService
@@ -20,12 +19,11 @@ export class OrderDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const  ad = {};
+    const ad = {};
 // @ts-ignore
     this.id = this.route.snapshot.paramMap.get('id');
     this.service.getOneUser(this.id).subscribe(data => {
-        this.orderDetail = data;
-this.detail = [this.orderDetail];
+        this.orderItemList = data;
       }
     );
   }
