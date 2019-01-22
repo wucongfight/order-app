@@ -25,11 +25,13 @@
   </div>
 </div>
 <nz-layout>
-  <nz-table #nzTable [nzData]="listOrder" [nzPageSize]="6" >
+  <nz-table #nzTable [nzData]="listOrder" [nzPageSize]="6"
+            (nzCurrentPageDataChange)="currentPageDataChange($event)">
     <thead nz-thead>
     <tr>
       <th nzWidth="62px" nzShowCheckbox  [(nzChecked)]="allChecked"
-          [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+          [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"
+         ></th>
       <th>下单批次</th>
       <th>城市Id</th>
       <th>订单编号</th>
@@ -51,7 +53,6 @@
       <td>{{order.verison}}</td>
       <td>{{order.orderType}}</td>
       <td>
-
         <a routerLink="/order-detail/{{order.idNumber}}">
           <button nz-button nzType="primary">详情</button>
         </a>

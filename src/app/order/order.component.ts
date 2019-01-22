@@ -4,20 +4,21 @@ import {Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {OrderService} from '../order.service';
 
-
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  allChecked: false;
-  indeterminate = false;
+ /* dealers: string[] = [];*/
+  displayData: Array<Order> = []; // 当前页面数据源
+  allChecked: false;  //  全选标记
+  indeterminate = false; // 删除勾选框样式
   orderType = -1; // 订单类型
   [x: string]: any;
 
   order$: Observable<any>;
-  listOrder: Order[] ; // 订单列表
+  listOrder: Order[]; // 订单列表
   order: Order; //  订单对象
   _options = [{
     value: -1,
@@ -41,25 +42,39 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.findOrderList(0, 0);
+    this.findOrderList(-1, 0);
   }
 
 // 全部删除
   deleteAll() {
+    const dealers = [];
+    // @ts-ignore
+    this.displayData.forEach(function (i) {
+      // @ts-ignore
+      if (i.checked === true) {
+        alert(i.idNumber.trim());
+        dealers.push(i.idNumber.trim());
+      }
+    });
+    this.delete(dealers);
   }
 
+// 数据源更改
+  currentPageDataChange($event: Array<Order>): void {
+    this.displayData = $event;
+  }
 
   refreshStatus(): void {
     // @ts-ignore
-    const allChecked = this.listOrder.every(value => value.checked === true);
-    const allUnChecked = this.listOrder.every(value => !value.checked);
+    const allChecked = this.displayData.every(value => value.checked === true);
+    const allUnChecked = this.displayData.every(value => !value.checked);
     // @ts-ignore
     this.allChecked = allChecked;
     this.indeterminate = (!allChecked) && (!allUnChecked);
   }
 
   checkAll(value: boolean): void {
-    this.listOrder.forEach(data => {
+    this.displayData.forEach(data => {
       // @ts-ignore
       data.checked = value;
     });
@@ -73,7 +88,7 @@ export class OrderComponent implements OnInit {
   }
 
   // 提交删除
-  confirm(id: string) {
+  confirm(id: string[]) {
     this.delete(id);
   }
 
@@ -114,7 +129,7 @@ export class OrderComponent implements OnInit {
 
   // 删除订单
   // subscribe();如果忘了，将不会向服务器发送请求
-  delete(id: string): void {
+  delete(id: string[]): void {
     this.service.deleteUser(id).subscribe();
     this.findOrderList(0, 0);
   }

@@ -4,7 +4,7 @@ import {OrderItemProduct} from './orderItemProduct';
 
 export class OrderItem {
   id: number;
-  orderId: number;
+  orderItemId: string;
   remark: string;
   sourceType: number;
   sourceId: string;

@@ -34,9 +34,8 @@ export class OrderService {
   }
 
   // 删除一个订单
-  deleteUser(id: String) {
-    alert(id);
-    return this.httpClient.delete(this.serviceUrl + `/delete/${id}`, httpOptions);
+  deleteUser(ids: string[]) {
+    return this.httpClient.delete(this.serviceUrl + `/delete/${ids}`, httpOptions);
   }
 
   // 更新数据

@@ -32,11 +32,11 @@ export class AddFormComponent implements OnInit {
     this.updateDetail();
     this.validateForm = this.fb.group({
       id: ['', [Validators.required]],
-      orderId: ['', [Validators.required]],
-      remark: ['', [Validators.required]],
-      sourceType: [''],
+      orderItemId: ['', [Validators.required]],
+      remark: [''],
+      sourceType: ['', [Validators.required]],
       productType: [''],
-      sourceId: [''],
+      sourceId: ['', [Validators.required]],
       createTime: [''],
       lastModifyTime: [''],
 

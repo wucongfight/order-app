@@ -14,10 +14,10 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="orderId" nzRequired> orderId</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="orderItemId" nzRequired> orderId</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input formControlName="orderId" id="'orderId'" nz-input [(ngModel)]="orderItem.orderId">
-      <nz-form-explain *ngIf="validateForm.get('orderId').dirty && validateForm.get('orderId').errors">Please input your
+      <input formControlName="orderItemId" id="'orderItemId'" nz-input [(ngModel)]="orderItem.orderItemId">
+      <nz-form-explain *ngIf="validateForm.get('orderItemId').dirty && validateForm.get('orderItemId').errors">Please input your
         orderId !
       </nz-form-explain>
     </nz-form-control>
@@ -26,7 +26,7 @@
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="remark" formControlName="remark" [(ngModel)]="orderItem.remark">
       <nz-form-explain *ngIf="validateForm.get('remark').dirty && validateForm.get('remark').errors">Please input
-        website!
+        remark!
       </nz-form-explain>
     </nz-form-control>
   </nz-form-item>
